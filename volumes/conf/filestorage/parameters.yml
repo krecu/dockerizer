@@ -1,0 +1,9 @@
+# This file is auto-generated during the composer install
+parameters:
+    rabbit_mq_host: rabbitmq
+    rabbit_mq_user: root
+    rabbit_mq_password: r00-t
+    rabbit_mq_vhost: isz-dev
+    rabbit_mq_port: 5672
+    secret: ThisTokenIsNotSoSecretChangeIt
+    path: /usr/share/nginx/html/filestorage/files

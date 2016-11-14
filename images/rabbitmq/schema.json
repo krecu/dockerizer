@@ -1,0 +1,487 @@
+{
+  "rabbit_version": "3.5.6",
+  "users": [
+    {
+      "name": "root",
+      "password_hash": "X4w6wmDbe12hPVUFjOWGygCyV9OiytvTkAtl9cnnlB72q2tJ",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": "administrator"
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "root",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "parameters": [],
+  "policies": [],
+  "queues": [
+    {
+      "name": "async.cache",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "async.sms",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "integrations.freshdoc",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "isz.filestorage",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "integrations.sstp",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "postman.config",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "async.query",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "file",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "auth.users",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "async.mail",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "async.messenger",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "auth.verify",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "expertise.api",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "integrations.zakupki",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "postman.message",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "app.transit",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "storage.api",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "postman.status_changed",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "postman.template",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "integrations.dfcp",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+  ],
+  "exchanges": [
+    {
+      "name": "isz.postman",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "isz.file",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "isz.integrations",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "isz.filestorage",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "isz.expertise",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "isz.async",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "isz.storage",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "isz.app",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "isz",
+      "vhost": "/",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "isz.auth",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "isz",
+      "vhost": "/",
+      "destination": "isz.app",
+      "destination_type": "exchange",
+      "routing_key": "",
+      "arguments": {}
+    },
+    {
+      "source": "isz",
+      "vhost": "/",
+      "destination": "isz.auth",
+      "destination_type": "exchange",
+      "routing_key": "auth.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz",
+      "vhost": "/",
+      "destination": "isz.expertise",
+      "destination_type": "exchange",
+      "routing_key": "expertise.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz",
+      "vhost": "/",
+      "destination": "isz.file",
+      "destination_type": "exchange",
+      "routing_key": "file.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz",
+      "vhost": "/",
+      "destination": "isz.filestorage",
+      "destination_type": "exchange",
+      "routing_key": "filestorage.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz",
+      "vhost": "/",
+      "destination": "isz.integrations",
+      "destination_type": "exchange",
+      "routing_key": "integrations.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz",
+      "vhost": "/",
+      "destination": "isz.postman",
+      "destination_type": "exchange",
+      "routing_key": "postman.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz",
+      "vhost": "/",
+      "destination": "isz.storage",
+      "destination_type": "exchange",
+      "routing_key": "storage.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.app",
+      "vhost": "/",
+      "destination": "app.transit",
+      "destination_type": "queue",
+      "routing_key": "app.transit.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.async",
+      "vhost": "/",
+      "destination": "async.cache",
+      "destination_type": "queue",
+      "routing_key": "async.cache.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.async",
+      "vhost": "/",
+      "destination": "async.query",
+      "destination_type": "queue",
+      "routing_key": "async.freshdoc.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.async",
+      "vhost": "/",
+      "destination": "async.mail",
+      "destination_type": "queue",
+      "routing_key": "async.mail.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.async",
+      "vhost": "/",
+      "destination": "async.messenger",
+      "destination_type": "queue",
+      "routing_key": "async.messenger.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.async",
+      "vhost": "/",
+      "destination": "async.sms",
+      "destination_type": "queue",
+      "routing_key": "async.sms.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.auth",
+      "vhost": "/",
+      "destination": "auth.users",
+      "destination_type": "queue",
+      "routing_key": "auth.password.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.auth",
+      "vhost": "/",
+      "destination": "auth.users",
+      "destination_type": "queue",
+      "routing_key": "auth.roles.get",
+      "arguments": {}
+    },
+    {
+      "source": "isz.auth",
+      "vhost": "/",
+      "destination": "auth.users",
+      "destination_type": "queue",
+      "routing_key": "auth.users.create",
+      "arguments": {}
+    },
+    {
+      "source": "isz.auth",
+      "vhost": "/",
+      "destination": "auth.users",
+      "destination_type": "queue",
+      "routing_key": "auth.users.get",
+      "arguments": {}
+    },
+    {
+      "source": "isz.auth",
+      "vhost": "/",
+      "destination": "auth.users",
+      "destination_type": "queue",
+      "routing_key": "auth.users.get_by_role",
+      "arguments": {}
+    },
+    {
+      "source": "isz.auth",
+      "vhost": "/",
+      "destination": "auth.verify",
+      "destination_type": "queue",
+      "routing_key": "auth.verify",
+      "arguments": {}
+    },
+    {
+      "source": "isz.expertise",
+      "vhost": "/",
+      "destination": "expertise.api",
+      "destination_type": "queue",
+      "routing_key": "expertise.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.file",
+      "vhost": "/",
+      "destination": "file",
+      "destination_type": "queue",
+      "routing_key": "file.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.filestorage",
+      "vhost": "/",
+      "destination": "isz.filestorage",
+      "destination_type": "queue",
+      "routing_key": "filestorage.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.integrations",
+      "vhost": "/",
+      "destination": "integrations.dfcp",
+      "destination_type": "queue",
+      "routing_key": "integrations.dfcp.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.integrations",
+      "vhost": "/",
+      "destination": "integrations.freshdoc",
+      "destination_type": "queue",
+      "routing_key": "integrations.freshdoc.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.integrations",
+      "vhost": "/",
+      "destination": "integrations.sstp",
+      "destination_type": "queue",
+      "routing_key": "integrations.sstp.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.integrations",
+      "vhost": "/",
+      "destination": "integrations.zakupki",
+      "destination_type": "queue",
+      "routing_key": "integrations.zakupki.#",
+      "arguments": {}
+    },
+    {
+      "source": "isz.storage",
+      "vhost": "/",
+      "destination": "storage.api",
+      "destination_type": "queue",
+      "routing_key": "storage.api.#",
+      "arguments": {}
+    }
+  ]
+}

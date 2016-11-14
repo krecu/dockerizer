@@ -1,0 +1,8 @@
+{
+  "authServer":"http://auth.isz.dev",
+  "productServer":"http://arm.isz.dev",
+  "clientId":"28_1j18zb5x72sk4c8wkkgwgo48w8w4gg8wck0w4ww08g4wwk8wkg",
+  "baseUrl":"http://application.isz.dev",
+  "procedureUrl":"http://isz.dev.procedures.gosbook.ru/procedures/main",
+  "socketUrl":"http://isz.dev.app.gosbook.ru:3001"
+}

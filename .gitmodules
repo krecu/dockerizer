@@ -1,0 +1,27 @@
+[submodule "volumes/code/application"]
+	path = volumes/code/application
+	url = ssh://git@gitlab.zakupki-dev.online:2222/zakupki/application.git
+[submodule "volumes/code/storage"]
+	path = volumes/code/storage
+	url = ssh://git@gitlab.zakupki-dev.online:2222/zakupki/storage.git
+[submodule "volumes/code/expertise"]
+	path = volumes/code/expertise
+	url = ssh://git@gitlab.zakupki-dev.online:2222/zakupki/expertise.git
+[submodule "volumes/code/integration"]
+	path = volumes/code/integration
+	url = ssh://git@gitlab.zakupki-dev.online:2222/zakupki/integrations.git
+[submodule "volumes/code/auth"]
+	path = volumes/code/auth
+	url = ssh://git@gitlab.zakupki-dev.online:2222/zakupki/auth.git
+[submodule "volumes/code/front"]
+	path = volumes/code/front
+	url = ssh://git@gitlab.zakupki-dev.online:2222/zakupki/planning-front.git
+[submodule "volumes/code/filestorage"]
+	path = volumes/code/filestorage
+	url = ssh://git@gitlab.zakupki-dev.online:2222/zakupki/filestorage.git
+[submodule "volumes/code/arm"]
+	path = volumes/code/arm
+	url = ssh://git@gitlab.zakupki-dev.online:2222/zakupki/arm.git
+[submodule "volumes/code/profile"]
+	path = volumes/code/profile
+	url = ssh://git@gitlab.zakupki-dev.online:2222/zakupki/auth-front.git

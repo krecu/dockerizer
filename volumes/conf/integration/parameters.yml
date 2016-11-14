@@ -1,0 +1,30 @@
+# This file is auto-generated during the composer install
+parameters:
+    locale: ru
+    secret: kgtfjdcjgrd5r6765765rtugh
+    rabbit_mq_host: rabbitmq
+    rabbit_mq_user: root
+    rabbit_mq_password: r00-t
+    rabbit_mq_vhost: /
+    rabbit_mq_port: 5672
+    graylog.hostname: localhost
+    graylog.port: 12201
+    source_instance: integrations.stage
+    dfcp.url: null
+    dfcp.url.post: null
+    sstp.url: null
+    isz_admin_user_id: null
+    freshdoc.api.url: null
+    api.file.url: 'http://isz.gosbook.ru'
+    zakupki.upload.url: null
+    freshdoc:
+        apiUrl: 'http://fd-isz.gosbook.ru/api/v1/'
+        login: a.malov@gblab.ru
+        password: gblab.ru
+        client_id: gosbook
+        client_secret: dfjg2l34f
+        callback_url: 'http://stage.isz.dosbook.ru/doc/upload'
+        folder.id: 222000
+        xuserid: 1D03F765-FDAA-4B64-9F88-A772EBA12E51
+        xsubsystem: fp_documents
+        rootdir: /vagrant/isz-integrations/app

@@ -1,0 +1,389 @@
+version: "2"
+services:
+
+  ########################################################################################################################
+  # Data containers
+  ########################################################################################################################
+
+  # Контейнер со всеми логами
+  data_logs:
+    image: busybox
+    volumes:
+      - ./volumes/logs:/var/log
+
+  # Контейнер с дампами базы данных
+  data_dump:
+    image: busybox
+    volumes:
+      - ./volumes/dump:/var/dump
+
+  # Контейнер с ключами
+  data_ssh:
+    image: busybox
+    volumes:
+      - /root/ssh:/root/.ssh
+
+  ########################################################################################################################
+  # Tools container
+  # Контайнеры каторые отвечают за сборку приложений или вресменных операций
+  ########################################################################################################################
+
+  # Контейнер каторый отвечает за развертывание PHP приложений
+  composer:
+    build: ./images/composer
+    links:
+      - postgresql
+    volumes_from:
+      - data_ssh
+      - code_application
+      - code_auth
+      - code_expertise
+      - code_storage
+      - code_integration
+      - code_filestorage
+
+  rabbitmq:
+    build: ./images/rabbitmq
+    hostname: rabbitmq
+    domainname: isz.dev
+    environment:
+      RABBITMQ_DEFAULT_USER: root
+      RABBITMQ_DEFAULT_PASS: r00-t
+    ports:
+      - 15672
+      - 5672
+
+  # Контейнер PostgreSQL
+  postgresql:
+    build: ./images/postgresql
+    environment:
+      LC_ALL: C.UTF-8
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: r00-t
+    ports:
+      - 5432
+    volumes_from:
+      - data_logs
+      - data_dump
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379
+    volumes_from:
+      - data_logs
+
+  # Nginx реверс крокси
+  proxy:
+    build: ./images/nginx/proxy
+    ports:
+      - 80:80
+    links:
+      - rabbitmq:nginx_rabbitmq
+      - nginx_adminer
+      - nginx_application
+      - nginx_auth
+      - nginx_expertise
+      - nginx_storage
+      - nginx_integration
+      - nginx_filestorage
+      - nginx_front
+      - nginx_profile
+
+  ########################################################################################################################
+  # Code container
+  ########################################################################################################################
+
+  code_application:
+    image: busybox
+    volumes:
+      - ./volumes/code/application:/usr/share/nginx/html/application
+      - ./volumes/conf/application/parameters.yml:/usr/share/nginx/html/application/app/config/parameters.yml
+
+  code_auth:
+    image: busybox
+    volumes:
+      - ./volumes/code/auth:/usr/share/nginx/html/auth
+      - ./volumes/conf/auth/parameters.yml:/usr/share/nginx/html/auth/app/config/parameters.yml
+
+  code_expertise:
+    image: busybox
+    volumes:
+      - ./volumes/code/expertise:/usr/share/nginx/html/expertise
+      - ./volumes/conf/expertise/parameters.yml:/usr/share/nginx/html/expertise/app/config/parameters.yml
+
+  code_storage:
+    image: busybox
+    volumes:
+      - ./volumes/code/storage:/usr/share/nginx/html/storage
+      - ./volumes/conf/storage/parameters.yml:/usr/share/nginx/html/storage/app/config/parameters.yml
+
+  code_integration:
+    image: busybox
+    volumes:
+      - ./volumes/code/integration:/usr/share/nginx/html/integration
+      - ./volumes/conf/integration/parameters.yml:/usr/share/nginx/html/integration/app/config/parameters.yml
+
+  code_front:
+    image: busybox
+    volumes:
+      - ./volumes/code/front:/usr/share/nginx/html/front
+      - ./volumes/conf/front/settings.js:/usr/share/nginx/html/front/settings.js
+
+  code_profile:
+    image: busybox
+    volumes:
+      - ./volumes/code/profile:/usr/share/nginx/html/profile
+      - ./volumes/conf/profile/settings.js:/usr/share/nginx/html/profile/settings.js
+
+  code_arm:
+    image: busybox
+    volumes:
+      - ./volumes/code/arm:/usr/share/nginx/html/arm
+      - ./volumes/conf/arm/serverSettings.json:/usr/share/nginx/html/arm/serverSettings.json
+      - ./volumes/conf/arm/settings.js:/usr/share/nginx/html/arm/js/settings.js
+
+  code_adminer:
+    image: busybox
+    volumes:
+      - ./volumes/code/adminer:/usr/share/nginx/html/adminer
+
+  code_filestorage:
+    image: busybox
+    volumes:
+      - ./volumes/code/filestorage:/usr/share/nginx/html/filestorage
+      - ./volumes/conf/filestorage/parameters.yml:/usr/share/nginx/html/filestorage/app/config/parameters.yml
+
+  ########################################################################################################################
+  # Consumers
+  ########################################################################################################################
+
+  consumer_verify:
+    build: ./images/consumer/auth
+    links:
+      - postgresql
+      - redis
+      - rabbitmq
+    volumes_from:
+      - data_logs
+      - code_auth
+
+  consumer_expertise:
+    build: ./images/consumer/expertise
+    links:
+      - postgresql
+      - redis
+      - rabbitmq
+    volumes_from:
+      - data_logs
+      - code_expertise
+
+  consumer_storage:
+    build: ./images/consumer/storage
+    links:
+      - postgresql
+      - redis
+      - rabbitmq
+    volumes_from:
+      - data_logs
+      - code_storage
+
+  ########################################################################################################################
+  # PHP-FPM container
+  ########################################################################################################################
+
+  php_application:
+    build: ./images/php/application
+    ports:
+      - 9000
+    links:
+      - postgresql
+      - redis
+      - rabbitmq
+    volumes_from:
+      - data_logs
+      - code_application
+
+  php_auth:
+    build: ./images/php/auth
+    environment:
+      SERVICE_NAME: auth
+      SERVICE_TAGS: php
+    ports:
+      - 9000
+    links:
+      - postgresql
+      - redis
+    volumes_from:
+      - data_logs
+      - code_auth
+
+  php_expertise:
+    build: ./images/php/expertise
+    ports:
+      - 9000
+    links:
+      - postgresql
+      - redis
+    volumes_from:
+      - data_logs
+      - code_expertise
+
+  php_storage:
+    build: ./images/php/storage
+    ports:
+      - 9000
+    links:
+      - postgresql
+      - redis
+      - nginx_auth:auth.isz.dev
+    volumes_from:
+      - data_logs
+      - code_storage
+
+  php_integration:
+    build: ./images/php/integration
+    ports:
+      - 9000
+    links:
+      - postgresql
+      - redis
+    volumes_from:
+      - data_logs
+      - code_integration
+
+  php_adminer:
+    build: ./images/php/adminer
+    ports:
+      - 9000
+    links:
+      - postgresql
+      - redis
+    volumes_from:
+      - data_logs
+      - code_adminer
+
+  php_filestorage:
+    build: ./images/php/filestorage
+    ports:
+      - 9000
+    volumes_from:
+      - data_logs
+
+  ########################################################################################################################
+  # Nginx container
+  ########################################################################################################################
+
+  nginx_adminer:
+    hostname: adminer
+    domainname: isz.dev
+    build: ./images/nginx/adminer
+    ports:
+      - 80
+    volumes_from:
+      - data_logs
+      - code_adminer
+    links:
+      - php_adminer
+
+  nginx_application:
+    hostname: application
+    domainname: isz.dev
+    build: ./images/nginx/application
+    ports:
+      - 80
+    volumes_from:
+      - data_logs
+      - code_application
+    links:
+      - php_application
+
+  nginx_auth:
+    hostname: auth
+    domainname: isz.dev
+    build: ./images/nginx/auth
+    ports:
+      - 80
+    volumes_from:
+      - data_logs
+      - code_auth
+    links:
+      - php_auth
+
+  nginx_expertise:
+    hostname: expertise
+    domainname: isz.dev
+    build: ./images/nginx/expertise
+    ports:
+      - 80
+    volumes_from:
+      - data_logs
+      - code_expertise
+    links:
+      - php_expertise
+
+  nginx_storage:
+    hostname: storage
+    domainname: isz.dev
+    build: ./images/nginx/storage
+    ports:
+      - 80
+    volumes_from:
+      - data_logs
+      - code_storage
+    links:
+      - php_storage
+
+  nginx_filestorage:
+    hostname: filestorage
+    domainname: isz.dev
+    build: ./images/nginx/filestorage
+    ports:
+      - 80
+    volumes_from:
+      - data_logs
+      - code_storage
+    links:
+      - php_filestorage
+
+  nginx_integration:
+    hostname: integration
+    domainname: isz.dev
+    build: ./images/nginx/integration
+    ports:
+      - 80
+    volumes_from:
+      - data_logs
+      - code_integration
+    links:
+      - php_integration
+
+  nginx_front:
+    hostname: planning
+    domainname: isz.dev
+    build: ./images/nginx/front
+    ports:
+      - 80
+    volumes_from:
+      - data_logs
+      - code_front
+
+  nginx_profile:
+    hostname: profile
+    domainname: isz.dev
+    build: ./images/nginx/profile
+    ports:
+      - 80
+    volumes_from:
+      - data_logs
+      - code_profile
+
+  nginx_arm:
+    hostname: arm
+    domainname: isz.dev
+    build: ./images/nginx/arm
+    ports:
+      - 80
+    volumes_from:
+      - data_logs
+      - code_arm

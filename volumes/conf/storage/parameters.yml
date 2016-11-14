@@ -1,0 +1,34 @@
+# This file is auto-generated during the composer install
+parameters:
+    locale: ru
+    secret: 'yg65fdtgv5fjgku6rj6yghljugkuyry54ygj,hg'
+    database_driver: pdo_pgsql
+    database_host: postgresql
+    database_port: 5432
+    database_name: isz
+    database_user: isz
+    database_password: isz
+    database_auth_name: auth
+    database_auth_user: isz
+    database_auth_password: isz
+    database_analytics_name: storage
+    database_expertise_name: expert
+    database_expertise_user: isz
+    database_expertise_password: isz
+    rabbit_mq_host: rabbitmq
+    rabbit_mq_user: root
+    rabbit_mq_password: r00-t
+    rabbit_mq_vhost: /
+    rabbit_mq_port: 5672
+    graylog.hostname: localhost
+    graylog.port: 12901
+    redis_host: redis
+    redis_port: 6379
+    jms_serializer.camel_case_naming_strategy.class: JMS\Serializer\Naming\IdenticalPropertyNamingStrategy
+    auth.client.id: 11_mxb32zc6fi800owkok8gs88c8cos40oo0k0c4oows0owcw0kw
+    auth.client.secret: 5whqtgarg98oc0kkw0gc8wwkssgkskooo40c8c480gc4cscgc8
+    auth.server.url: 'http://auth.isz.dev'
+    source_instance: storage.stage
+    auth.url.roles: 'http://auth.isz.dev/roles'
+    download_link: /path/to/file
+    date_criteria: 01.01.2015

@@ -1,0 +1,23 @@
+# This file is auto-generated during the composer install
+parameters:
+    locale: ru
+    secret: khjub8973giyggfHUGFKJHGYHG98734fg
+    database_driver: pdo_pgsql
+    database_host: postgresql
+    database_port: 5432
+    database_name: auth
+    database_user: isz
+    database_password: isz
+    rabbit_mq_host: rabbitmq
+    rabbit_mq_user: root
+    rabbit_mq_password: r00-t
+    rabbit_mq_vhost: /
+    rabbit_mq_port: 5672
+    redis_host: redis
+    redis_port: 6379
+    graylog.hostname: 77.95.130.125
+    graylog.port: 12201
+    sonata.user.admin.group.class: OAuthBundle\Admin\GroupAdmin
+    source_instance: auth.stage
+    sonata.user.default.endpoint: 'http://isz.dev'
+    sonata.user.redirect.endpoint: 'http://isz.dev'

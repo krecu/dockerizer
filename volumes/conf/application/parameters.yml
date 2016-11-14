@@ -1,0 +1,29 @@
+# This file is auto-generated during the composer install
+parameters:
+    locale: ru
+    secret: df.lkgjh3874ghoygKHJGFkju6y348gvhldfjkhglsdkjfhg9834hrpgae
+    rabbit_mq_host: rabbitmq
+    rabbit_mq_user: root
+    rabbit_mq_password: r00-t
+    rabbit_mq_vhost: /
+    rabbit_mq_port: 5672
+    redis_dsn: 'redis://redis:6379'
+    graylog.hostname: 77.95.130.125
+    graylog.port: 12201
+    source_instance: skornouhov
+    folder_to_upload: /var/www/isz.dev.files.gosbook.ru/uploads/
+    cache.auth_verify: 28800
+    cache.lot_user_info: 3600
+    upload_sstp_path: 'http://storage.stage.isz.gosbook.ru/uploads/sstp/'
+    upload_path: 'http://isz.dev.app.isz.gosbook.ru'
+    app_system_user: 1D03F765-FDAA-4B64-9F88-A772EBA12E51
+    app_system_token: MDVkOWRjMmRjYWJjYzcwMWQ4ZjdmYjgyYmI1Njc1MDA0MzlkYTRmMTk2YjYxZDdiOWQwOTc4NmZlZDljMWEzNQ
+    app_settings:
+        xuserid: 1D03F765-FDAA-4B64-9F88-A772EBA12E51
+        xsubsystems:
+            fp_documents: fp_documents
+            fp_planning: fp_planning
+    rabbit_mq_connection: isz
+    rabbit_mq_connection_timeout: 10
+    rabbit_mq_read_write_timeout: 10
+    current_year: 2015

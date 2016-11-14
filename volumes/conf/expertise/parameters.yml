@@ -1,0 +1,23 @@
+# This file is auto-generated during the composer install
+parameters:
+    locale: ru
+    secret: kgtfjdcjgrd5r6765765rtugh
+    database_driver: pdo_pgsql
+    database_host: postgresql
+    database_port: 5432
+    database_name: expertise
+    database_user: isz
+    database_password: isz
+    rabbit_mq_host: rabbitmq
+    rabbit_mq_user: root
+    rabbit_mq_password: r00-t
+    rabbit_mq_vhost: /
+    rabbit_mq_port: 5672
+    graylog.hostname: localhost
+    graylog.port: 12201
+    source_instance: app.expert
+    expertise.datasorce.groups: /api/expertgroups
+    expertise.datasorce.groupsRoutingKey: storage.api.query
+    graylog.level: 200
+    redis.host: 127.0.0.1
+    redis.port: 6379
